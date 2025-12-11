@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de Inscripciones</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Calculadora Tarifa de Inscripción</h2>
+
+    <label>Seleccione la tarifa:</label>
+    <select id="tarifa">
+        <option value="texto">eligue una tarifa</option>
+        <option value="500000">Comprador - $500,000</option>
+        <option value="400000">Vendedor - $400,000</option>
+        <option value="120000">Expositor - $120,000</option>
+    </select>
+
+    <label>Tipo de Afiliado:</label>
+    <select id="afiliado">
+         <option value="texto">Eligue un afliado</option>
+        <option value="asociado">Asociado (10% descuento)</option>
+        <option value="noasociado">No Asociado (10% recargo)</option>
+    </select>
+
+    <label>Procedencia:</label>
+    <select id="procedencia">
+         <option value="texto">Eligue una procedencia</option>
+        <option value="nacional">Nacional (paga en COP)</option>
+        <option value="extranjero">Extranjero (paga en USD)</option>
+    </select>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="resultado">
+        <div id="tituloResultado">Valor Total</div>
+        <div id="valorResultado">$0</div>
+    </div>
+
+</div>
+
+<script src="funciones.js"></script>
+</body>
+</html>
