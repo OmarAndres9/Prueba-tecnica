@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cálculo de Inscripción</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 600px; margin: auto; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        label, select, button { display: block; margin-bottom: 10px; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #resultado { margin-top: 20px; padding: 10px; border: 1px dashed #007bff; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Cálculo de Valores de Inscripción</h2>
+        <form id="formularioInscripcion">
+            <label for="tipoAfiliado">Tipo de Afiliado:</label>
+            <select id="tipoAfiliado" name="tipoAfiliado" required>
+                <option value="asociado">Asociado</option>
+                <option value="noAsociado">No Asociado</option>
+                <option value="extranjero">Extranjero</option>
+            </select>
+
+            <label for="tarifa">Tarifa de Inscripción:</label>
+            <select id="tarifa" name="tarifa" required>
+                <option value="500000">Comprador ($500.000 + 50)</option>
+                <option value="400000">Vendedor ($400.000 + 50)</option>
+                <option value="120000">Expositor ($120.000 + 50)</option>
+            </select>
+
+            <button type="button" onclick="procesarCalculo()">Calcular Valores</button>
+        </form>
+
+        <div id="resultado">
+            <p>Seleccione opciones y haga clic en "Calcular Valores".</p>
+        </div>
+    </div>
+
+    <script src="tarifa.js"></script>
+</body>
+</html>
