@@ -40,23 +40,38 @@ function calcular() {
     const trm = 3830.02;
 
     let texto = `
-        Valor base: $${tarifaNum.toLocaleString()}<br>
-        ${etiquetaAjuste}: $${valorAjuste.toLocaleString()}<br>
-        Subtotal: $${subtotal.toLocaleString()}<br>
-        Iva: $${iva.toLocaleString()}<br>
-        <b>Total a pagar: $${total.toLocaleString()} COP</b>
+        <div class="invoice-row">
+            <span>Valor base</span>
+            <span>$${tarifaNum.toLocaleString()}</span>
+        </div>
+        <div class="invoice-row">
+            <span>${etiquetaAjuste}</span>
+            <span>$${valorAjuste.toLocaleString()}</span>
+        </div>
+        <div class="invoice-row">
+            <span>Iva (19%)</span>
+            <span>$${iva.toLocaleString()}</span>
+        </div>
+        <div class="invoice-divider"></div>
+        <div class="invoice-total">
+            <span>Total a pagar</span>
+            <span>$${total.toLocaleString()} COP</span>
+        </div>
     `;
 
     if (procedencia === "extranjero") {
         const totalUSD = total / trm;
-        texto += `<br>Valor en Dólares: <b>$${totalUSD.toFixed(2)} USD</b> (TRM ${trm})`;
+        texto += `
+        <div class="invoice-row" style="margin-top: 5px; font-size: 14px; color: #777;">
+            <span>Valor en Dólares (TRM ${trm})</span>
+            <span>$${totalUSD.toFixed(2)} USD</span>
+        </div>`;
     }
 
     document.getElementById("tituloResultado").innerText = "Detalle del cálculo";
     document.getElementById("valorResultado").innerHTML = texto;
     document.getElementById("resultado").style.display = "block";
 }
-
 
 
 
