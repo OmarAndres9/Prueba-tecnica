@@ -69,39 +69,42 @@ Automatizar el proceso de cálculo aplicando correctamente:
 ---
 
 ##  Gráfico conceptual del razonamiento
-              ┌──────────────────────┐
-              │   Seleccionar Tarifa  │
-              └──────────┬───────────┘
-                         │
-                     Valor Base
-                         │
-                         ▼
-              ┌──────────────────────┐
-              │     Calcular IVA     │
-              └──────────┬───────────┘
-                         │
-                Base + IVA = Subtotal
-                         │
-                         ▼
-            ┌──────────────────────────┐
-            │   Determinar Afiliado     │
-            │  Asociado / No Asociado   │
-            └───────────┬──────────────┘
-                        │
-             -10%       │       +10%
-              ▼         │         ▼
-        (Descuento)     │    (Recargo)
-                        ▼
-                    Total en COP
-                        │
-                        ▼
-      ┌──────────────────────────────────┐
-      │ Procedencia: Nacional / Extranjero│
-      └───────────────┬───────────────────┘
-                      │
-          Nacional    │     Extranjero
-             ▼        │          ▼
-      Pago en COP     │   Total USD = Total / TRM
+               ┌──────────────────────────┐
+               │   Seleccionar Tarifa      │
+               │       (Valor Base)        │
+               └─────────────┬────────────┘
+                             │
+                             ▼
+               ┌──────────────────────────┐
+               │ Aplicar Afiliación        │
+               │  - Asociado  → -10%       │
+               │  - No Asociado → +10%     │
+               └─────────────┬────────────┘
+                             │
+                             ▼
+                  Ajuste aplicado al Base
+                             │
+                             ▼
+               ┌──────────────────────────┐
+               │     Obtener Subtotal      │
+               │   (Base ajustado)         │
+               └─────────────┬────────────┘
+                             │
+                             ▼
+               ┌──────────────────────────┐
+               │     Calcular IVA 19%      │
+               └─────────────┬────────────┘
+                             │
+            Subtotal + IVA = Total en COP
+                             │
+                             ▼
+      ┌──────────────────────────────────────────┐
+      │     Procedencia: Nacional / Extranjero    │
+      └───────────────────┬────────────────────────┘
+                          │
+             Nacional     │      Extranjero
+               ▼          │         ▼
+       Pago final en COP  │  Total USD = Total / TRM
 
 ---
 
