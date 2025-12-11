@@ -146,9 +146,9 @@ Se realizaron los siguientes cambios:
 
 - Separación clara entre:
   - Valor base
-  - IVA
+  - Ajuste 
   - Subtotal
-  - Ajuste
+  - IVA
   - Total final
 - Mayor claridad en el flujo del cálculo
 - Validación correcta de todas las opciones
