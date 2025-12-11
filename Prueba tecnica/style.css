@@ -57,10 +57,34 @@ button:hover {
     border: 1px solid #ddd;
     border-radius: 10px;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     background: #f9f9f9;
     display: none;
-    /* Ocultado hasta que haya cálculo */
+    max-width: 100%;
+}
+
+.invoice-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #555;
+    text-align: left;
+    /* Reset text align */
+}
+
+.invoice-divider {
+    border-bottom: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.invoice-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
 }
 
 #tituloResultado {
@@ -72,7 +96,6 @@ button:hover {
 }
 
 #valorResultado {
-    font-size: 28px;
-    font-weight: bold;
-    color: #222;
+    text-align: left;
+    width: 100%;
 }
