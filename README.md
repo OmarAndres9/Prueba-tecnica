@@ -60,9 +60,9 @@ Automatizar el proceso de cálculo aplicando correctamente:
 ##  Proceso de cálculo
 
 1. Seleccionar tarifa (Valor Base).
-2. Calcular IVA del 19%.
+2. Aplicar **descuento o recargo** según afiliación.
 3. Obtener **Subtotal**.
-4. Aplicar **descuento o recargo** según afiliación.
+4. Calcular IVA del 19%.
 5. Obtener total en **COP**.
 6. Si es extranjero → convertir a **USD**.
 
