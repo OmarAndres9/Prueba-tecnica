@@ -1,25 +1,35 @@
-# Prueba-tecnica
+# Prueba Técnica – Calculadora de Tarifas de Inscripción
 
-# Ejercicios de Prueba Técnica
+Este repositorio contiene la solución completa de la prueba técnica, organizada en dos enfoques:
 
-Este repositorio contiene dos carpetas con diferentes aproximaciones para la prueba técnica:
+- **Prueba técnica estándar** → Desarrollo manual siguiendo estrictamente los requerimientos.  
+- **Prueba técnica hecha con apoyo de IA** → Donde se muestra cómo se usó un modelo inicial generado por IA para acelerar el proceso, pero luego fue mejorado y corregido.
+
+---
+
 # Calculadora de Tarifas de Inscripción
 
-Este proyecto implementa una calculadora en **HTML + JavaScript** que determina el valor final a pagar según la tarifa de inscripción, el tipo de afiliado y la procedencia del participante.
+El proyecto implementa una calculadora desarrollada con **HTML, CSS y JavaScript**, que determina el valor final a pagar según:
+
+- Tarifa de inscripción
+- Tipo de afiliado
+- Procedencia del participante (nacional / extranjero)
+- Conversión a USD con TRM = 3,830.02 (si aplica)
 
 ---
 
 ## ✔ Objetivo del proyecto
 
-Automatizar el cálculo del valor final aplicando:
+Automatizar el proceso de cálculo aplicando correctamente:
 
-- IVA del 19%.
-- Descuento o recargo del 10% según afiliación.
-- Conversión a USD si el participante es extranjero (TRM = 3,830.02).
+- IVA del **19%**
+- Ajuste de **-10%** (asociado) o **+10%** (no asociado)
+- Conversión a dólares para extranjeros
+- Visualización clara de cada etapa del cálculo
 
 ---
 
-## 🧾 Tarifas de inscripción (IVA incluido)
+##  Tarifas de inscripción (IVA incluido)
 
 | Tipo      | Valor     |
 |-----------|-----------|
@@ -29,7 +39,7 @@ Automatizar el cálculo del valor final aplicando:
 
 ---
 
-## 🧍 Tipos de afiliado
+##  Tipos de afiliado
 
 | Afiliación   | Ajuste |
 |--------------|--------|
@@ -38,144 +48,168 @@ Automatizar el cálculo del valor final aplicando:
 
 ---
 
-## 🌍 Procedencia
+##  Procedencia
 
 | Procedencia | Moneda |
 |-------------|---------|
 | Nacional    | COP     |
-| Extranjero  | USD (conversion TRM) |
+| Extranjero  | USD (TRM) |
 
 ---
 
-## 🔢 Proceso de cálculo
+##  Proceso de cálculo
 
-1. Obtener **Valor Base**.
-2. Calcular **IVA (19%)**.
-3. Obtener **Subtotal = Base + IVA**.
-4. Aplicar **descuento o recargo (±10%)** según afiliación.
-5. Obtener el **Total final en COP**.
-6. Si es extranjero: convertir a USD → `Total / TRM`.
-
----
-
-## 📊 Gráfico conceptual del razonamiento
-                  ┌──────────────────────┐
-                  │   Seleccionar Tarifa  │
-                  └──────────┬───────────┘
-                             │
-                         Valor Base
-                             │
-                             ▼
-                  ┌──────────────────────┐
-                  │   Calcular IVA 19%   │
-                  └──────────┬───────────┘
-                             │
-                    Base + IVA = Subtotal
-                             │
-                             ▼
-                ┌──────────────────────────┐
-                │   Tipo de Afiliado?       │
-                │  Asociado / No Asociado   │
-                └───────────┬──────────────┘
-                            │
-                 -10%       │       +10%
-                  ▼         │         ▼
-            (Descuento)     │    (Recargo)
-                            ▼
-                        Total COP
-                            │
-                            ▼
-          ┌──────────────────────────────────┐
-          │ Procedencia? Nacional / Extranjero│
-          └───────────────┬───────────────────┘
-                          │
-              Nacional    │     Extranjero
-                 ▼        │          ▼
-          Pago en COP     │   Total USD = Total / TRM
-
-
-
-## Prueba tecnica
-Contiene la solución de la prueba técnica desarrollada estándarmente.
-
-## prueba tecnica hecha por ia
+1. Seleccionar tarifa (Valor Base).
+2. Calcular IVA del 19%.
+3. Obtener **Subtotal**.
+4. Aplicar **descuento o recargo** según afiliación.
+5. Obtener total en **COP**.
+6. Si es extranjero → convertir a **USD**.
 
 ---
 
-## 2. Respuesta de la IA
-
-La IA generó:
-
-- Un formulario HTML básico.
-- Un script en JavaScript con lógica para calcular:
-  - IVA del 19%.
-  - Descuento o recargo del 10% según afiliación.
-  - Conversión a USD para extranjeros.
-- Un flujo general de cálculo.
-
-Sin embargo, también generó errores importantes:
-
-- **Confundió procedencia con tipo de afiliado.**
-- Trató “extranjero” como si fuera una afiliación (similar a “asociado” o “no asociado”).
-- No comprendió que una persona **extranjera puede ser asociada o no asociada**.
-- Parte de la lógica se aplicó en lugares incorrectos o mal estructurados.
-
----
-
-## 3. ¿Qué decidí aplicar y por qué?
-
-Apliqué únicamente:
-
-- La estructura del formulario HTML.
-- La idea de separar valor base, IVA y ajuste.
-- La conversión del total final a dólares usando TRM.
-- El modelo general del proceso de cálculo.
-
-**Motivo:**  
-Estas partes ayudaron a construir más rápido una base visual y funcional del proyecto, pero no eran suficientes ni estaban completamente alineadas con los requerimientos. Por eso fueron corregidas y mejoradas.
-
----
-
-## 4. ¿Qué no apliqué y por qué?
-
-### ❌ Lógica incorrecta sobre procedencia y afiliación
-No apliqué la interpretación equivocada donde la IA trató *extranjero* como afiliación.  
-Esto no fue usado porque:
-
-- Un usuario puede ser extranjero y estar asociado.
-- O ser extranjero y no estar asociado.
-- La IA no distinguía esas combinaciones, generando resultados erróneos.
-
-### ❌ Flujo incompleto o mal estructurado
-No se usaron partes como:
-
-- Cálculos mezclados (sin etapas claras).
-- Ajustes aplicados en momentos incorrectos.
-- Totales sin separar “subtotal” y “ajuste”.
-- Falta de validación entre afiliación y procedencia.
-
-Estas fallas impedían cumplir correctamente los requerimientos técnicos de la prueba.
+##  Gráfico conceptual del razonamiento
+              ┌──────────────────────┐
+              │   Seleccionar Tarifa  │
+              └──────────┬───────────┘
+                         │
+                     Valor Base
+                         │
+                         ▼
+              ┌──────────────────────┐
+              │     Calcular IVA     │
+              └──────────┬───────────┘
+                         │
+                Base + IVA = Subtotal
+                         │
+                         ▼
+            ┌──────────────────────────┐
+            │   Determinar Afiliado     │
+            │  Asociado / No Asociado   │
+            └───────────┬──────────────┘
+                        │
+             -10%       │       +10%
+              ▼         │         ▼
+        (Descuento)     │    (Recargo)
+                        ▼
+                    Total en COP
+                        │
+                        ▼
+      ┌──────────────────────────────────┐
+      │ Procedencia: Nacional / Extranjero│
+      └───────────────┬───────────────────┘
+                      │
+          Nacional    │     Extranjero
+             ▼        │          ▼
+      Pago en COP     │   Total USD = Total / TRM
 
 ---
 
-## ¿Por qué usé IA?
+# 2. Acerca de la versión generada por IA
 
-Utilicé IA **como una herramienta de apoyo visual**, para acelerar:
+La IA generó una primera versión con:
 
-- La comprensión inicial del reto.
-- El diseño conceptual del flujo.
-- La organización preliminar del código.
+- Un formulario HTML básico
+- Una lógica general del proceso
+- El flujo conceptual del cálculo (modelo visual inicial)
 
-La intención NO era que la IA resolviera la prueba por completo, sino que me ayudara a entender mejor la lógica.
+Este modelo permitió visualizar rápidamente la estructura del proyecto, pero **incluía errores importantes**.
 
-Finalmente, fue necesario un análisis propio para:
+---
 
-- Corregir los errores de interpretación.
-- Reorganizar la lógica.
-- Implementar correctamente todas las combinaciones de afiliado + procedencia.
-- Garantizar que los cálculos fueran exactos en COP y USD.
+# 3. Mejoras realizadas a partir del modelo visual generado por IA
 
-En conclusión, la IA fue usada como apoyo, pero el desarrollo final dependió del razonamiento humano para cumplir todos los requisitos correctamente.
+Tomé ese modelo visual preliminar y **lo utilicé como referencia**, pero fue necesario:
+
+### ✔ Corregir la interpretación de la IA  
+La IA confundió:
+- *Procedencia* con *tipo de afiliación*  
+- Y trató “extranjero” como si fuera una afiliación
+
+Esto generaba combinaciones inválidas.
+
+**Yo reorganicé completamente la lógica**, permitiendo todas estas combinaciones válidas:
+
+- Asociado + Nacional  
+- No Asociado + Nacional  
+- Asociado + Extranjero  
+- No Asociado + Extranjero  
+
+---
+
+### ✔ Mejoras de lógica y estructura
+
+Se realizaron los siguientes cambios:
+
+- Separación clara entre:
+  - Valor base
+  - IVA
+  - Subtotal
+  - Ajuste
+  - Total final
+- Mayor claridad en el flujo del cálculo
+- Validación correcta de todas las opciones
+- Cálculo exacto en COP antes de convertir a USD
+- Eliminación de operaciones duplicadas o aplicadas en un orden incorrecto
+
+---
+
+### ✔ Funciones adicionales agregadas
+
+Además de corregir la lógica, agregué funciones que faltaban:
+
+- Validación de campos vacíos
+- Mensajes claros de error
+- Formateo de valores en moneda
+- Limpieza del formulario
+- Mostrar paso a paso el cálculo final
+- Organización del código en funciones reutilizables
+
+---
+
+# 4. ¿Qué NO se tomó del modelo inicial?
+
+- Lógica mezclada y mal organizada  
+- Interpretación incorrecta de la procedencia  
+- Cálculos aplicados en el orden equivocado  
+- Ausencia de validaciones  
+- Uso confuso de condiciones para afiliación y país
+
+Estas partes fueron descartadas porque no cumplían con los requerimientos reales de la prueba.
+
+---
+
+# 5. ¿Por qué se usó IA?
+
+Se utilizó IA **solo como ayuda visual inicial**:
+
+- Para crear un primer boceto del formulario  
+- Para generar un flujo conceptual de cálculo  
+- Para acelerar la fase de ideación  
+
+Sin embargo:
+
+> El desarrollo final fue producto del análisis humano, la corrección lógica y la implementación manual siguiendo estrictamente los requerimientos.
+
+La IA fue un **apoyo**, no la solución final.
+
+---
+
+## 📁 Estructura del repositorio
+
+---
+
+## 🏁 Conclusión
+
+El proyecto combina:
+
+- Un modelo visual inicial generado por IA  
+- Mejoras, correcciones y funciones adicionales implementadas manualmente  
+- Un flujo de cálculo totalmente alineado con los requerimientos de la prueba técnica  
+
+El resultado final es una calculadora sólida, validada y correctamente estructurada.
+
+---
 
 
-> 
+
